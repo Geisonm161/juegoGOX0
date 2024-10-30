@@ -55,14 +55,20 @@ function App() {
   return (
     <div className=" flex flex-col items-center justify-center pos h-screen bg-blue-950">
       <label className="font-bold text-white text-6xl">{` ${
-        !validatedData ? "Turno" : "Perdedor"
+        !validatedData ? "Turno" : "Ganador"
       }`}</label>
-      <label className="text-8xl mb-6 font-bold">
-        {optionSing ? (
-          <label className="text-red-700">X</label>
-        ) : (
-          <label className="text-green-700">0</label>
-        )}
+      <label
+        className={`text-${
+          optionSing
+            ? !validatedData
+              ? "red"
+              : "green"
+            : !validatedData
+            ? "green"
+            : "red"
+        }-700 text-8xl mb-6 font-bold`}
+      >
+        {optionSing ? (!validatedData ? "X" : "0") : !validatedData ? "0" : "X"}
       </label>
       <div className="flex items-center justify-center bg-blue-700 border-4 border-blue-700 rounded-2xl shadow-container">
         <div className="w-[500px] font-bold">
